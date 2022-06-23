@@ -1,9 +1,18 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
+// ::-webkit-scrollbar {
+//     display: none;
+// }
+
+html{// ojo borrar esta parte, en caso de futuros errores
+    overflow: hidden;
+}
+
 .login{
 
     margin-top: 5rem;
+    
 
     .uptask{
         background: linear-gradient(to right, v.$cyan 0%, lighten(v.$cyan, 30%) 100%);
