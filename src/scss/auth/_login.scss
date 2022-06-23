@@ -1,7 +1,7 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
-.crear{
+.login{
 
     margin-top: 5rem;
 
@@ -17,4 +17,16 @@
             font-size: 10rem;
         }
     }
+
+    input[type="submit"]{
+        @include m.boton(v.$cyan, v.$blanco);
+        margin: 0 auto;
+    }
+
+    .acciones{
+        a{
+            color: v.$cyan;
+        }
+    }
+
 }
