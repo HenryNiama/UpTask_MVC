@@ -19,7 +19,7 @@ class LoginController{
     }
 
     public static function logout(){
-       echo "Desde Login";
+       echo "Desde Logout";
     
     }
 
@@ -35,12 +35,16 @@ class LoginController{
         ]);
     }
 
-    public static function olvide(){
-        echo "Desde Olvide";
+    public static function olvide(Router $router){
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             # code...
         }
+
+                // Render a la vista
+        $router->render('auth/olvide', [
+            'titulo' => 'Forgot Password'
+        ]);
     }
 
     public static function reestablecer(){
