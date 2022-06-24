@@ -71,12 +71,15 @@ class LoginController{
         ]);
     }
 
-    public static function confirmar(){
-        echo "Desde confirmar";
+    public static function confirmar(Router $router){
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             # code...
         }
+        
+        $router->render('auth/confirmar', [
+            'titulo' => 'Confirma tu Cuenta'
+        ]);
     }
 }
 
