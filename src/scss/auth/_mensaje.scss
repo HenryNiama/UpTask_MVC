@@ -1,0 +1,20 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+// ::-webkit-scrollbar {
+//     display: none;
+// }
+
+html {
+    // ojo borrar esta parte, en caso de futuros errores
+    overflow: hidden;
+}
+
+.mensaje{
+
+    margin-top: 5rem;
+
+    .uptask {
+        @include m.textoDegradado(v.$verde, v.$verde);
+    }
+}
