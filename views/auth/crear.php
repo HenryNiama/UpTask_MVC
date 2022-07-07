@@ -25,8 +25,8 @@
                     type="email" 
                     id="email"
                     placeholder="Tu Email"
-                    name="Email"
-                    value = "<?php echo $usuario->nombre; ?>"
+                    name="email"
+                    value = "<?php echo $usuario->email; ?>"
                 />
             </div>
 
