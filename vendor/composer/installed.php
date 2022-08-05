@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '5aff8c3d0f5fc2416055fa451daa1408235df191',
+        'reference' => '1131b808551b441392ca0e7edbf209e48d337a66',
         'name' => 'juandelatorre/up-task_mvc',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '5aff8c3d0f5fc2416055fa451daa1408235df191',
+            'reference' => '1131b808551b441392ca0e7edbf209e48d337a66',
             'dev_requirement' => false,
         ),
         'phpmailer/phpmailer' => array(
