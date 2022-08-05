@@ -86,11 +86,31 @@ class LoginController{
         $alertas = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
             $usuario = new Usuario($_POST);
             $alertas = $usuario->validarEmail();
 
             if (empty($alertas)) {
-                # code...
+                // Buscar el usuario
+                $usuario = Usuario::where('email', $usuario->email);
+
+                if ($usuario && $usuario->confirmado === '1') {
+                    // debuguear('Si existe esta confirmado');
+                    //Si se encontro el usuario
+
+                    // Generar un nuevo token
+
+                    //Actualizar el usuario
+
+                    // Enviar el email
+
+                    //Imprimir Alerta
+                    
+                }else{
+                    Usuario::setAlerta('error', 'El Usuario no existe o no esta confirmado.');
+                    $alertas = Usuario::getAlertas();
+                }
+                
             }
         }
 
