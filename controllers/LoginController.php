@@ -83,13 +83,21 @@ class LoginController{
 
     public static function olvide(Router $router){
 
+        $alertas = [];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            # code...
+            $usuario = new Usuario($_POST);
+            $alertas = $usuario->validarEmail();
+
+            if (empty($alertas)) {
+                # code...
+            }
         }
 
         // Render a la vista
         $router->render('auth/olvide', [
-            'titulo' => 'Forgot Password'
+            'titulo' => 'Forgot Password',
+            'alertas' => $alertas
         ]);
     }
 
@@ -147,7 +155,7 @@ class LoginController{
         $alertas = Usuario::getAlertas();
 
         
-        $router->render('auth/confirmar', [
+        $router->render('auKth/confirmar', [
             'titulo' => 'Confirma tu Cuenta',
             'alertas'=> $alertas
         ]);
