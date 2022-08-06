@@ -9,7 +9,8 @@
 
         <?php if($mostrar) {?>
 
-        <form class="formulario" action="/reestablecer" method="POST">
+        <!--No lleva el action yaque necesitamos la referencia del token-->
+        <form class="formulario" method="POST">
 
             <div class="campo">
                 <label for="password">Password</label>

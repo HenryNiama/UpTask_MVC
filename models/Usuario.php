@@ -68,6 +68,19 @@ class Usuario extends ActiveRecord{
         return self::$alertas;
     }
 
+    // Validar el Password
+    public function validarPassword(){
+        
+        if (strlen($this->password) < 6) {
+            self::$alertas['error'][]= 'El "Password" debe tener al menos 6 caracteres.';
+        }
+        if ($this->password !== $this->password2) {
+            self::$alertas['error'][]= 'El Password no coincide';
+        }
+
+        return self::$alertas;
+    }
+
 }
 
 ?>
