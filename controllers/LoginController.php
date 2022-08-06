@@ -101,10 +101,13 @@ class LoginController{
                     // Generar un nuevo token
                     $usuario->crearToken();
                     unset($usuario->password2);
-                    
+
                     //Actualizar el usuario
                     $usuario->guardar();
+
                     // Enviar el email
+                    $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
+                    $email->enviarInstrucciones();
 
                     //Imprimir Alerta
                     Usuario::setAlerta('exito', 'Revisa tu email');
