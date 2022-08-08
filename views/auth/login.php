@@ -15,7 +15,7 @@
                     type="email" 
                     id="email"
                     placeholder="Tu Email"
-                    name="Email"
+                    name="email"
                 />
             </div>
 
