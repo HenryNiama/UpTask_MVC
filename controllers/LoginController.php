@@ -36,7 +36,7 @@ class LoginController{
                             $_SESSION['login'] = true;
 
                         // Redireccionar
-                        header('Location: /proyecto');
+                        header('Location: /dashboard');
 
                         // debuguear($_SESSION);
 
