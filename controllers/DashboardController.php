@@ -32,6 +32,24 @@ class DashboardController{
 
             // validacion
             $alertas = $proyecto->validarProyecto();
+
+            if (empty($alertas)) {
+
+                // Generar una URL unica
+                $hash = md5(uniqid());
+                $proyecto->url = $hash;
+
+                // Almacenar el creador del proyecto
+                $proyecto->propietarioId = $_SESSION['id'];
+
+                // Guardar el proyecto
+                // debuguear($proyecto);
+                $proyecto->guardar();
+
+                // Reedireccionar
+                header('Location: /proyecto?id='. $proyecto->url);
+
+            }
         }
         
         $router->render('dashboard/crear-proyecto', [
