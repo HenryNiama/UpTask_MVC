@@ -5,7 +5,9 @@
 
     function mostrarFormulario() {
         const modal = document.createElement('DIV');
+
         modal.classList.add('modal');
+
         modal.innerHTML = `
             <form class="formulario nueva-tarea">
                 <legend>Añade una nueva tarea</legend>
@@ -24,6 +26,11 @@
                 </div>
             </form>
         `;
+
+        setTimeout(() => {
+            const formulario = document.querySelector('.formulario');
+            formulario.classList.add('animar'); 
+        }, 2000);
 
         document.querySelector('body').appendChild(modal);
     }
