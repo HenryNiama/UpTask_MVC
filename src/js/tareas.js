@@ -30,7 +30,7 @@
         setTimeout(() => {
             const formulario = document.querySelector('.formulario');
             formulario.classList.add('animar'); 
-        }, 2000);
+        }, 500);
 
         document.querySelector('body').appendChild(modal);
     }

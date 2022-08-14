@@ -14,14 +14,20 @@
         background-color: v.$blanco;
         padding: 2rem;
         margin: 0 auto; // para centrar horizontalmente
-
         transform: translateY(-30rem);
+
+        transition-property: all;
+        transition-duration: 500ms;
+        transition-timing-function: ease-out;
+        opacity: 0;
 
         &.animar{
             // Centrar verticalmente:
             position: relative;
             top: 50%;
             transform: translateY(-50%);
+
+            opacity: 1;
         }
     }
 }
