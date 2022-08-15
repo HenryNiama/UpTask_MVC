@@ -57,6 +57,11 @@
 
         .cerrar-modal{
             @include m.boton(v.$naranja, v.$blanco);
+        } 
+
+        input[type="text"]{
+            border: 1px solid v.$gris;
+            border-radius: .5rem;
         }
     }
 }
