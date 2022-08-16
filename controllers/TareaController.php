@@ -18,8 +18,12 @@ class TareaController{
             //     'nombre' => 'Juan'
             // ];
 
+            $respuesta = [
+                'proyectoId' => $_POST['proyectoId']
+            ];
+
             // Mando la respuesta
-            echo json_encode($_POST); 
+            echo json_encode($respuesta); 
         }
     }
 

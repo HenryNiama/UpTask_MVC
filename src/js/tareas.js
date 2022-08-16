@@ -98,6 +98,7 @@
         const datos = new FormData();
 
         datos.append('nombre', tarea); // enviamos como peticion
+        datos.append('proyectoId', obtenerProyecto());
 
         try {
             const url = 'http://localhost:3000/api/tarea';
@@ -121,5 +122,11 @@
 
     }
 
+    function obtenerProyecto() {
+        const proyectoParams = new URLSearchParams(window.location.search);
+        const proyecto = Object.fromEntries(proyectoParams.entries()); // Iterar el objeto
+
+        return proyecto.id;
+    }
 
 })();
