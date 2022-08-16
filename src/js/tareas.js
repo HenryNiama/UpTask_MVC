@@ -64,6 +64,9 @@
 
             return;
         }
+
+        // Pasa la validacion, entonces, llamamos:
+        agregarTarea(tarea);
  
     }
 
@@ -87,6 +90,11 @@
         setTimeout(() => {
             alerta.remove();
         }, 3000);
+    }
+
+    // Consultar el Servidor para anadir una nueva tarea al proyecto actual
+    function agregarTarea(tarea) {
+        
     }
 
 
