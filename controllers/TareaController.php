@@ -12,7 +12,14 @@ class TareaController{
     public static function crear()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            # code...
+
+            // $array = [
+            //     'respuesta' => true,
+            //     'nombre' => 'Juan'
+            // ];
+
+            // Mando la respuesta
+            echo json_encode($_POST); 
         }
     }
 
