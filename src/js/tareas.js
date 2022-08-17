@@ -98,7 +98,7 @@
         const datos = new FormData();
 
         datos.append('nombre', tarea); // enviamos como peticion
-        datos.append('proyectoId', obtenerProyecto());
+        datos.append('url', obtenerProyecto());
 
         try {
             const url = 'http://localhost:3000/api/tarea';
@@ -112,10 +112,14 @@
 
             const resultado = await respuesta.json();
 
-            console.log(resultado);
+                console.log(resultado);
 
             mostrarAlerta(resultado.mensaje, resultado.tipo, document.querySelector('.formulario legend'));
 
+            if (resultado.tipo === 'exito') {
+                const formulario = document.querySelector('.nueva-tarea');
+                formulario.reset();
+            }
 
         } catch (error) {
             console.log(error);
