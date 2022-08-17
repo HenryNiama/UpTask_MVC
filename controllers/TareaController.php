@@ -2,6 +2,8 @@
 
 namespace Controllers;
 
+use Model\Proyecto;
+
 class TareaController{
 
     public static function index()
@@ -13,18 +15,33 @@ class TareaController{
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            // $array = [
-            //     'respuesta' => true,
-            //     'nombre' => 'Juan'
-            // ];
+            session_start();
 
-            $respuesta = [
-                'proyectoId' => $_POST['proyectoId']
-            ];
+            $proyectoId = $_POST['proyectoId']; // Esta parte viene del JS agregarTarea()
 
-            // Mando la respuesta
-            echo json_encode($respuesta); 
+            $proyecto = Proyecto::where('url', $proyectoId);
+
+            if (!$proyecto || $proyecto->propietarioId !== $_SESSION['id']) {
+
+                $respuesta = [
+                    'tipo' => 'error',
+                    'mensaje' => 'Hubo un error al agregar la tarea.'
+                ];
+
+                echo json_encode($respuesta); 
+
+                return;
+            }else {
+                $respuesta = [
+                    'tipo' => 'exito',
+                    'mensaje' => 'Tarea agregada correctamente.'
+                ];
+
+                echo json_encode($respuesta); 
+            }
+
         }
+
     }
 
     public static function actualizar()
