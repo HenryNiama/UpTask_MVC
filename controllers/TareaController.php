@@ -9,7 +9,22 @@ class TareaController{
 
     public static function index()
     {
+
+        session_start();
+
+        $proyectoId = $_GET['id'];// En realidad es la url del proyecto, este esta en la url de la pagina como id
+
+        if (!$proyectoId) header('Location: /dashboard');
+
+        $proyecto = Proyecto::where('url', $proyectoId);
+
+        if(!$proyecto || $proyecto->propietarioId !== $_SESSION['id']) header('Location: /404');
+
+        $tareas = Tarea::belongsTo('proyectoId', $proyecto->id);
+
+        // debuguear($tareas);
         
+        echo json_encode(['tareas' => $tareas]);
     }
 
     public static function crear()
