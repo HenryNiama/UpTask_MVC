@@ -1,4 +1,7 @@
 (function () {
+
+    obtenerTareas();
+
     // Boton para mostrar el Modal de Agregar Tarea
     const nuevaTareaBtn = document.querySelector('#agregar-tarea');
     nuevaTareaBtn.addEventListener('click', mostrarFormulario);
@@ -133,6 +136,31 @@
         const proyecto = Object.fromEntries(proyectoParams.entries()); // Iterar el objeto
 
         return proyecto.id;
+    }
+
+    async function obtenerTareas(){
+        try {
+            const id = obtenerProyecto();
+
+            const url = `/api/tareas?id=${id}`;
+
+            const respuesta = await fetch(url);
+
+            const resultado = await respuesta.json();
+
+            // console.log(resultado.tareas);
+            const {tareas} = resultado;
+
+            console.log(tareas);
+            mostrarTareas(tareas);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    function mostrarTareas(tareas) {
+        console.log('Mostrando', tareas);
     }
 
 })();
