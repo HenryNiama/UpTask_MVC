@@ -63,8 +63,6 @@ class TareaController{
 
             echo json_encode($respuesta);
             // echo json_encode($tarea);
-            
-
         }
 
     }

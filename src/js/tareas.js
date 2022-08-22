@@ -46,6 +46,8 @@
                 setTimeout(() => {
                     modal.remove();
                 }, 500);
+          
+                window.location.reload(); // Recarga la pagina actual   
             }
 
             if (e.target.classList.contains('submit-nueva-tarea')) {
