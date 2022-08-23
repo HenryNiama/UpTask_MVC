@@ -2,6 +2,8 @@
 
     obtenerTareas();
 
+    let tareas = [];
+
     // Boton para mostrar el Modal de Agregar Tarea
     const nuevaTareaBtn = document.querySelector('#agregar-tarea');
     nuevaTareaBtn.addEventListener('click', mostrarFormulario);
@@ -46,8 +48,7 @@
                 setTimeout(() => {
                     modal.remove();
                 }, 500);
-          
-                window.location.reload(); // Recarga la pagina actual   
+            
             }
 
             if (e.target.classList.contains('submit-nueva-tarea')) {
@@ -124,6 +125,19 @@
             if (resultado.tipo === 'exito') {
                 const formulario = document.querySelector('.nueva-tarea');
                 formulario.reset();
+
+                // Agregar el objeto de tarea al global de tareas
+                const tareaObj = {
+                    id: String(resultado.id),
+                    nombre: tarea,
+                    estado: "0", // porque es tarea nueva
+                    proyectoId: resultado.proyectoId
+                };
+
+                // Agrego el objeto al arreglo global
+                tareas = [...tareas, tareaObj]; 
+
+                mostrarTareas();
             }
 
         } catch (error) {
@@ -151,17 +165,19 @@
             const resultado = await respuesta.json();
 
             // console.log(resultado.tareas);
-            const {tareas} = resultado;
+            tareas = resultado.tareas;
 
             console.log(tareas);
-            mostrarTareas(tareas);
+            mostrarTareas();
 
         } catch (error) {
             console.log(error);
         }
     }
 
-    function mostrarTareas(tareas) {
+    function mostrarTareas() {
+
+        limpiarTareasAntiguas();
 
         if (tareas.length === 0) {
             const contenedorTareas = document.querySelector('#listado-tareas');
@@ -215,8 +231,14 @@
 
             console.log(listadoTareas);
         });
+    }
 
+    function limpiarTareasAntiguas() {
+        const listadoTareas = document.querySelector('#listado-tareas');
 
+        while (listadoTareas.firstChild) {
+            listadoTareas.removeChild(listadoTareas.firstChild);
+        }
     }
 
 })();
