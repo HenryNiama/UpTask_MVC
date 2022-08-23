@@ -253,7 +253,7 @@
     }
 
     async function actualizarTarea(tarea) {
-        const {estado, id, nombre, proyectoId} = tarea;
+        const {estado, id, nombre} = tarea;
 
         const datos = new FormData();
 
@@ -271,6 +271,14 @@
             });
 
             const resultado = await respuesta.json();
+
+            if (resultado.respuesta.tipo === 'exito') {
+                mostrarAlerta(
+                    resultado.respuesta.mensaje, 
+                    resultado.respuesta.tipo, 
+                    document.querySelector('.contenedor-nueva-tarea')
+                );
+            }
         } catch (error) {
             console.log(error);
         }
