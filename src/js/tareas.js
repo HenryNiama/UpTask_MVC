@@ -60,7 +60,27 @@
             }
 
             if (e.target.classList.contains('submit-nueva-tarea')) {
-                submitFormularioNuevaTarea();
+
+                const nombreTarea = document.querySelector('#tarea').value.trim();
+        
+                if (nombreTarea === '') {
+                    // Mostrar alerta de error
+                    mostrarAlerta('El nombre de la tarea es obligatorio', 'error', 
+                        document.querySelector('.formulario legend'));
+
+                    return;
+                }
+
+                if (editar) { // Si es true
+                    console.log('Editando tarea');
+
+                    tarea.nombre = nombreTarea;
+                    actualizarTarea(tarea);
+                }else{
+                    console.log('Agregando Nueva Tarea');
+                    agregarTarea(nombreTarea);
+                }
+                
             }
             
         });
@@ -68,21 +88,6 @@
         document.querySelector('.dashboard').appendChild(modal);
     }
 
-    function submitFormularioNuevaTarea() {
-        const tarea = document.querySelector('#tarea').value.trim();
-        
-        if (tarea === '') {
-            // Mostrar alerta de error
-            mostrarAlerta('El nombre de la tarea es obligatorio', 'error', 
-                document.querySelector('.formulario legend'));
-
-            return;
-        }
-
-        // Pasa la validacion, entonces, llamamos:
-        agregarTarea(tarea);
- 
-    }
 
     function mostrarAlerta(mensaje, tipo, referencia) {
 
@@ -212,7 +217,7 @@
             const nombreTarea = document.createElement('P');
             nombreTarea.textContent = tarea.nombre;
             nombreTarea.ondblclick = function () {
-                mostrarFormulario(true, tarea);
+                mostrarFormulario(true, {...tarea});
             }
 
             const opcionesDiv = document.createElement('div');
