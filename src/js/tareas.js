@@ -194,6 +194,9 @@
 
         limpiarTareasAntiguas();
 
+        totalPendientes();
+        totalCompletas();
+
         const arrayTareas = filtradas.length ? filtradas : tareas;
 
         if (arrayTareas.length === 0) {
@@ -390,6 +393,33 @@
         }
 
         mostrarTareas();
+    }
+
+    function totalPendientes() {
+
+        // Nos trae cuantas tareas estan pendientes:
+        const totalPendientes = tareas.filter(tarea => tarea.estado === '0');
+
+        const pedientesRadios = document.querySelector('#pendientes');
+
+        if (totalPendientes.length === 0) {
+            pedientesRadios.disabled = true;
+        }else{
+            pedientesRadios.disabled = false;
+        }
+    }
+
+    function totalCompletas() {
+        // Nos trae cuantas tareas estan pendientes:
+        const totalCompletas = tareas.filter(tarea => tarea.estado === '1');
+
+        const completasRadio = document.querySelector('#completadas');
+
+        if (totalCompletas.length === 0) {
+            completasRadio.disabled = true;
+        }else{
+            completasRadio.disabled = false;
+        } 
     }
 
 
