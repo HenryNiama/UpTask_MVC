@@ -18,3 +18,12 @@ if (cerrarMenuBtn) {
         }, 1000);
     });
 }
+
+// Elimina la clase de .mostrar, en un tamano de tablet y mayores
+
+window.addEventListener('resize', function () {
+    const anchoPantalla = document.body.clientWidth;
+    if (anchoPantalla >= 769) {
+        sidebar.classList.remove('mostrar');
+    }
+});
