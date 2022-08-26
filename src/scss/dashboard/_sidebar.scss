@@ -62,6 +62,10 @@
                     cursor: pointer;
                 }
             }
+
+            @include m.tablet {
+                display: none;
+            }
         }
     }
 
@@ -73,19 +77,39 @@
         a{
             color: v.$blanco;
             display: block;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             padding: .7rem;
             transition-property: background-color;
             transition-duration: 300ms;
             text-transform: uppercase;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 2.4rem;
+            text-align: center;
 
             &:hover,
             &.activo{
                 background-color: darken(v.$indigo, 20%);
                 border-radius: .5rem;
             }
+
+            @include m.tablet {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+                text-align: left;
+            }
+
+        }
+    }
+
+    .cerrar-sesion-mobile{
+        margin-top: 10rem;
+
+        .cerrar-sesion{
+            @include m.boton(v.$indigo, v.$blanco);
+        }
+
+        @include m.tablet {
+            display: none;
         }
     }
 }
