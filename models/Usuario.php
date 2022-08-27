@@ -64,13 +64,18 @@ class Usuario extends ActiveRecord{
     }
 
     // Hashea el password
-    public function hashPassword()
+    public function hashPassword(): void
     {
         $this->password = password_hash($this->password, PASSWORD_BCRYPT);  
     }
 
+    public function comprobar_password(): bool
+    {
+        return password_verify($this->password_actual,  $this->password);
+    }
+
     // Generar un Token
-    public function crearToken()
+    public function crearToken(): void
     {
         $this->token = uniqid();
     }
@@ -115,7 +120,7 @@ class Usuario extends ActiveRecord{
         return self::$alertas;
     }
 
-    public function nuevo_password()
+    public function nuevo_password() : array
     {
         if (!$this->password_actual) {
             self::$alertas['error'][] = 'El Password Actual no puede ir vacio.';
