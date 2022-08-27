@@ -103,6 +103,13 @@ class DashboardController{
 
             if (empty($alertas)) {
                 // Guardar el usuario
+                $usuario->guardar();
+
+                Usuario::setAlerta('exito', 'Guardado Correctamente');
+                $alertas = $usuario->getAlertas();
+
+                // Asignar el nombre nuevo a la barra
+                $_SESSION['nombre'] = $usuario->nombre;
             }
         }
         
