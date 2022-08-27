@@ -14,7 +14,8 @@
     .formulario label,
     .login .acciones a,
     .crear .acciones a,
-    .olvide .acciones a{
+    .olvide .acciones a,
+    .filtros .filtros-inputs h2{
         color: v.$blanco;
     }
 
@@ -32,8 +33,38 @@
         background-color: v.$blanco;
     }
 
-    .barra-mobile{
+    .sidebar{
+        @include m.tablet {
+            background-color: darken($grisOscuro, 5%);
+        }
+
+        .sidebar-nav a {
+            &.activo,
+            &:hover{
+                background-color: v.$naranja;
+            }
+        }
+    }
+
+
+    .barra-mobile,
+    .barra{
         background-color: darken($grisOscuro, 7%);
+    }
+
+    .barra {
+        p {
+        color: v.$naranja;
+            span{
+                color: v.$grisClaro;
+            }
+        }
+
+        .cerrar-sesion{
+            @include m.boton(v.$naranja, v.$blanco);
+            padding: 1rem;
+            font-size: 1.4rem;
+        }
     }
 
     .filtros{
@@ -43,7 +74,7 @@
             color: v.$blanco;
         }
         input[type="radio"]{
-            accent-color: $grisOscuro;
+            accent-color: v.$naranja;
         }
     }
 
